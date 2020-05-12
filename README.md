@@ -17,6 +17,10 @@ Clover is not supported as some modules may need conversion and considering that
 
 ## OpenCore Configuration
 
+[OpenCore](https://github.com/acidanthera/OpenCorePkg.git) (0.5.8)
+* Removed
+   - Everything except 'OpenRuntime.efi' - _We don't need the rest at all (legacy or Intel specific drivers that might break the EFI for AMD systems)_
+
 ### config.plist
 
 SMBIOS: iMacPro1,1 (Generate with [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS))
@@ -26,8 +30,8 @@ SMBIOS: iMacPro1,1 (Generate with [GenSMBIOS](https://github.com/corpnewt/GenSMB
 **ApfsDriverLoader.efi** (from OpenCore 0.5.7)
 
 **[AppleSupportPkg](https://github.com/acidanthera/AppleSupportPkg)** (2.1.7)
-    *Removed
-        * AudioDxe - _won't work on Realtek soundcards_
+* Removed
+   - AudioDxe - _won't work on Realtek soundcards_
 
 ### Kexts (Also known as "Kernel Extensions")
 
