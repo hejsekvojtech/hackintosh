@@ -47,8 +47,6 @@ SMBIOS: Spoof as `iMacPro1,1` (Generate with [GenSMBIOS](https://github.com/corp
 
 **[AppleMCEReporterDisabler](https://github.com/acidanthera/bugtracker/files/3703498/AppleMCEReporterDisabler.kext.zip)** (unknown) - Disables the AppleMCEReporter kext which causes kernel panics on AMD systems
 
-**[SMCAMDProcessor](https://github.com/trulyspinach/SMCAMDProcessor)** (0.6.1) - XNU kernel extension for power management and monitoring of AMD processors
-
 **[RadeonBoost](https://egpu.io/forums/mac-setup/radeonboost-something-for-you-guys-to-try/)** (1.3) - Makes use of special framebuffer that Apple uses for their GPUs on top of "regular" PC one hence improved workload performance
 
 _Although macOS supports NVMe drives, only those from the IONVMe family work out-of-the-box which are unfortunately limited to Apple. If you are using an NVMe drive, you'll need this_
