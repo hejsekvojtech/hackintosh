@@ -1,7 +1,8 @@
 # Ryzentosh
 
-This is my EFI configuration for macOS Catalina on Ryzen. OpenCore BL is already packed in.
+This is my EFI configuration for macOS Catalina on Ryzen. OpenCore BL is already packed in, all you need is to generate your unique SMBIOS or features like iMessage won't work.
 Clover is not supported as some modules may need conversion and considering that OpenCore has more advantages over Clover I think the choice is obvious.
+This setup should work on most B350/B450 boards and Ryzen CPUs paired with any Polaris GPU
 
 ## Key specifications
 
@@ -18,16 +19,15 @@ Clover is not supported as some modules may need conversion and considering that
 ## OpenCore Configuration
 
 **[OpenCore](https://github.com/acidanthera/OpenCorePkg.git)** (0.5.8) - the base EFI structure
-* Removed
-   - Everything except 'OpenRuntime.efi' - _We don't need the rest at all (legacy or Intel specific drivers that might break the EFI for AMD systems)_
 
 ### config.plist
 
-SMBIOS: iMacPro1,1 (Generate with [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS))
+SMBIOS: Spoof as `iMacPro1,1` (Generate with [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS)) - we spoof our machine as an iMac Pro 2017 because it is the closest one to our setup spec wise. You can also try `MacPro7,1` (Mac Pro 2019) which however supports Catalina and newer
 
 ### Drivers
 
-**ApfsDriverLoader.efi** (from AppleSupportPkg 2.1.6) - Allows us to see APFS partitions
+* Removed
+   - Everything except 'OpenRuntime.efi' - _We don't need the rest at all (legacy or Intel specific drivers that might break the EFI for AMD systems)_
 
 **[AppleSupportPkg](https://github.com/acidanthera/AppleSupportPkg)** (2.1.7) - implements HFS+ support
 * Removed
@@ -56,7 +56,7 @@ _Although macOS supports NVMe drives, only those from the IONVMe family work out
 
 ### Tools
 
-I usually nuke the entire directory content as I won't probably never use these debugging tools.
+I usually nuke the entire directory content as I won't probably never use those debugging tools.
 Also according to the guide linked below it is better to do so anyways.
 
 ## Creating the USB installer
