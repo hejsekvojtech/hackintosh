@@ -16,13 +16,26 @@ This setup should work on most B350/B450 boards and Ryzen CPUs paired with any P
 | **ETHERNET** | Realtek 8111H |
 | **AUDIO** | Realtek ALC892 |
 
+## Compatibility checklist
+- [x] Audio (Front panel and back)
+- [x] USB (Front panel and back) - However hardware profiler sees our USB controller twice (working on it)
+- [x] Ethernet
+- [x] iServices (make sure you generate a new SMBIOS before installing)
+- [x] Sleep
+- [x] Proper GPU support
+- [x] Supplementary updates (OpenCore needs to be updated first!)
+
+* Not tested:
+   FileVault
+   Docker
+
 ## OpenCore Configuration
 
 **[OpenCore](https://github.com/acidanthera/OpenCorePkg.git)** (0.5.8) - the base EFI structure
 
 ### config.plist
 
-SMBIOS: Spoof as `iMacPro1,1` (Generate with [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS)) - we spoof our machine as an iMac Pro 2017 because it is the closest one to our setup spec wise. You can also try `MacPro7,1` (Mac Pro 2019) which however supports Catalina and newer
+SMBIOS: Spoof as `iMacPro1,1` (Generate with [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS)) - we spoof our machine as an iMac Pro 2017 because it is the closest one to our setup spec wise
 
 ### Drivers
 
@@ -49,8 +62,8 @@ SMBIOS: Spoof as `iMacPro1,1` (Generate with [GenSMBIOS](https://github.com/corp
 
 **[RadeonBoost](https://egpu.io/forums/mac-setup/radeonboost-something-for-you-guys-to-try/)** (1.3) - Makes use of special framebuffer that Apple uses for their GPUs on top of "regular" PC one hence improved workload performance
 
-_Although macOS supports NVMe drives, only those from the IONVMe family work out-of-the-box which are unfortunately limited to Apple. If you are using an NVMe drive, you'll need this_
-**[NVMeFix](https://github.com/acidanthera/NVMeFix)** (1.0.2)
+_Although macOS supports NVMe drives, only those from the IONVMe family work out-of-the-box which are unfortunately limited to Apple. If you are using an NVMe drive, you'll need this: **[NVMeFix](https://github.com/acidanthera/NVMeFix)** (1.0.2).
+After placing the NVMEeFix kext in its folder, don't forget to do an 'OC Snapshot' in **[ProperTree](https://github.com/corpnewt/ProperTree)**_
 
 ### Tools
 
