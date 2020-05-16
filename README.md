@@ -26,8 +26,8 @@ This setup should work on most B350/B450 boards and Ryzen CPUs paired with any P
 - [x] Supplementary updates (OpenCore needs to be updated first!)
 
 * Not tested:
-   FileVault
-   Docker
+   - FileVault
+   - Docker
 
 ## OpenCore Configuration
 
