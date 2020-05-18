@@ -18,7 +18,7 @@ This setup should work on most B350/B450 boards and Ryzen CPUs paired with any P
 
 ## Compatibility checklist
 - [x] Audio (Front panel and back)
-- [x] USB (Front panel and back) - However hardware profiler sees our USB controller twice (working on it)
+- [x] USB (Front panel and back)
 - [x] Ethernet
 - [x] iServices (make sure you generate a new SMBIOS before installing)
 - [x] Sleep
