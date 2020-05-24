@@ -25,9 +25,12 @@ This setup should work on most B350/B450 boards and Ryzen CPUs paired with any P
 - [x] Proper GPU support
 - [x] Supplementary updates (OpenCore needs to be updated first!)
 
-* Not tested:
-   - FileVault
-   - Docker
+### Not tested
+* FileVault
+* Docker
+
+### Not working
+* Microphone out (works with **[VoodooHDA](https://sourceforge.net/projects/voodoohda/)** but audio quality suffers a bit on Zen)
 
 ## OpenCore Configuration
 
@@ -73,3 +76,35 @@ Also according to the guide linked below it is better to do so anyways.
 ## Creating the USB installer
 
 Go see this detailed guide: <https://dortania.github.io/OpenCore-Desktop-Guide/installer-guide/>
+
+## Modifying `About This Mac`
+
+For those who want everything to be perfect
+
+![](https://github.com/hejsekvojtech/ryzentosh/blob/master/Res/AboutThisMac.png)
+
+### You will need
+* **[BBEdit](https://www.barebones.com/products/bbedit/download.html)** - universal text editor
+* Disabled System Integrity Protection
+* Terminal
+
+### How to
+1) Disable SIP by rebooting into recovery mode, then go to Utilities > Terminal and type `csrutil disable` and then `reboot`
+2) Open Terminal and type `sudo mount -uw /` and your password, this remounts System as read-write
+3) Now we will be altering the CPU model string, in this step you'll need to know what language is your macOS in. If it's American english, your language code will be `en`, for British it's `en_GB` etc.. because following command has a placeholder for your language code
+`cp /System/Library/PrivateFrameworks/AppleSystemInfo.framework/Versions/A/Resources/<YOUR LANGUAGE CODE>.lproj/Processors.strings ~/Desktop/`
+and
+`cp Library/Preferences/com.apple.SystemProfiler.plist ~/Desktop/`
+4) On your desktop you will see two new files, _com.apple.SystemProfiler.plist_ and _Processors.strings_. Open _com.apple.SystemProfiler.plist_ with BBEdit
+5) Just replace the default product name that is wrapped in the `<string>` tag with your own and save
+6) Now open _Processors.strings_ with BBEdit
+7) Search for the CPU model that the `About This Mac` window is showing, and modify the one that is wrapped in the `<string>` tag to the real one
+8) Save and exit
+9) Open Terminal and copy modified files back to their proper paths
+`sudo cp -Rf ~/Desktop/com.apple.SystemProfiler.plist Library/Preferences/`
+`sudo cp -Rf ~/Desktop/Processors.strings /System/Library/PrivateFrameworks/AppleSystemInfo.framework/Versions/A/Resources/<YOUR LANGUAGE CODE>.lproj/Processors.strings`
+10) Reboot
+
+### Sources
+<https://amd-osx.com/forum/viewtopic.php?f=61&t=9516&sid=f0388ae3b575f0c26959fc3a933dbb54>
+<https://www.idownloadblog.com/2017/01/13/how-to-modify-about-this-mac-hackintosh/>
