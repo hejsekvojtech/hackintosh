@@ -1,5 +1,3 @@
-# Ryzentosh
-
 This is my EFI configuration for macOS Catalina on Ryzen. OpenCore BL is already packed in, all you need is to generate your unique SMBIOS or features like iMessage won't work.
 Clover is not supported as some modules may need conversion and considering that OpenCore has more advantages over Clover I think the choice is obvious.
 This setup should work on most B350/B450 boards and Ryzen CPUs paired with any Polaris GPU
@@ -65,8 +63,10 @@ SMBIOS: Spoof as `iMacPro1,1` (Generate with [GenSMBIOS](https://github.com/corp
 
 **[RadeonBoost](https://egpu.io/forums/mac-setup/radeonboost-something-for-you-guys-to-try/)** (1.3) - Makes use of special framebuffer that Apple uses for their GPUs on top of "regular" PC one hence improved workload performance
 
+**[SMCAMDProcessor](https://github.com/trulyspinach/SMCAMDProcessor)** (0.6.3) - XNU kernel extension for power management and monitoring of AMD processors
+
 _Although macOS supports NVMe drives, only those from the IONVMe family work out-of-the-box which are unfortunately limited to Apple. If you are using an NVMe drive, you'll need this: **[NVMeFix](https://github.com/acidanthera/NVMeFix)** (1.0.2).
-After placing the NVMEeFix kext in its folder, don't forget to do an 'OC Snapshot' in **[ProperTree](https://github.com/corpnewt/ProperTree)**_
+After placing the NVMeFix kext in its folder, don't forget to do an 'OC Snapshot' in **[ProperTree](https://github.com/corpnewt/ProperTree)**_
 
 ### Tools
 
@@ -106,7 +106,7 @@ cp Library/Preferences/com.apple.SystemProfiler.plist ~/Desktop/
 4) On your desktop you will see two new files, _com.apple.SystemProfiler.plist_ and _Processors.strings_. Open _com.apple.SystemProfiler.plist_ with BBEdit
 5) Just replace the default product name that is wrapped in the `<string>` tag with your own and save
 6) Now open _Processors.strings_ with BBEdit
-7) Search for the CPU model that the `About This Mac` window is showing, and modify the one that is wrapped in the `<string>` tag to the real one
+7) Search for the CPU model shown in the 'About This Mac' window, and modify the one that is wrapped in the `<string>` tag to the real one
 8) Save and exit
 9) Open Terminal and copy modified files back to their proper paths
 

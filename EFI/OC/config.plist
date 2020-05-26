@@ -298,34 +298,34 @@
 			<dict>
 				<key>Comment</key>
 				<string></string>
-				<key>Enabled</key>
-				<true/>
 				<key>MaxKernel</key>
 				<string></string>
-				<key>MinKernel</key>
-				<string></string>
-				<key>BundlePath</key>
-				<string>SMCProcessor.kext</string>
-				<key>ExecutablePath</key>
-				<string>Contents/MacOS/SMCProcessor</string>
 				<key>PlistPath</key>
 				<string>Contents/Info.plist</string>
+				<key>Enabled</key>
+				<true/>
+				<key>MinKernel</key>
+				<string></string>
+				<key>ExecutablePath</key>
+				<string>Contents/MacOS/AMDRyzenCPUPowerManagement</string>
+				<key>BundlePath</key>
+				<string>AMDRyzenCPUPowerManagement.kext</string>
 			</dict>
 			<dict>
 				<key>Comment</key>
 				<string></string>
-				<key>Enabled</key>
-				<true/>
 				<key>MaxKernel</key>
 				<string></string>
-				<key>MinKernel</key>
-				<string></string>
-				<key>BundlePath</key>
-				<string>SMCSuperIO.kext</string>
-				<key>ExecutablePath</key>
-				<string>Contents/MacOS/SMCSuperIO</string>
 				<key>PlistPath</key>
 				<string>Contents/Info.plist</string>
+				<key>Enabled</key>
+				<true/>
+				<key>MinKernel</key>
+				<string></string>
+				<key>ExecutablePath</key>
+				<string>Contents/MacOS/SMCAMDProcessor</string>
+				<key>BundlePath</key>
+				<string>SMCAMDProcessor.kext</string>
 			</dict>
 		</array>
 		<key>Block</key>
@@ -1382,7 +1382,7 @@
 			<key>BootProtect</key>
 			<string>None</string>
 			<key>ExposeSensitiveData</key>
-			<integer>6</integer>
+			<integer>8</integer>
 			<key>HaltLevel</key>
 			<integer>2147483648</integer>
 			<key>ScanPolicy</key>
