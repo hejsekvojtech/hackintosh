@@ -58,8 +58,6 @@ SMBIOS: Spoof as `iMacPro1,1` (Generate with [GenSMBIOS](https://github.com/corp
 
 **[AppleMCEReporterDisabler](https://github.com/acidanthera/bugtracker/files/3703498/AppleMCEReporterDisabler.kext.zip)** (unknown) - Disables the AppleMCEReporter kext which causes kernel panics on AMD systems
 
-**[RadeonBoost](https://egpu.io/forums/mac-setup/radeonboost-something-for-you-guys-to-try/)** (1.3) - Makes use of special framebuffer that Apple uses for their GPUs on top of "regular" PC one hence improved workload performance
-
 **[SMCAMDProcessor](https://github.com/trulyspinach/SMCAMDProcessor)** (0.6.3) - XNU kernel extension for power management and monitoring of AMD processors
 
 _Although macOS supports NVMe drives, only those from the IONVMe family work out-of-the-box which are unfortunately limited to Apple. If you are using an NVMe drive, you'll need this: **[NVMeFix](https://github.com/acidanthera/NVMeFix)** (1.0.2).
@@ -76,8 +74,6 @@ Go see this detailed guide: <https://dortania.github.io/OpenCore-Desktop-Guide/i
 
 ## Modifying 'About This Mac'
 
-For those who want everything to be perfect
-
 ![](https://github.com/hejsekvojtech/ryzentosh/blob/master/Res/AboutThisMac.png)
 
 ### You will need
@@ -88,7 +84,8 @@ For those who want everything to be perfect
 ### How to
 1) Disable SIP by rebooting into recovery mode, then go to Utilities > Terminal and type `csrutil disable` and then `reboot`
 2) Open Terminal and type `sudo mount -uw /` and your password, this remounts System as read-write
-3) Now we will be altering the CPU model string, in this step you'll need to know what language is your macOS in. If it's American english, your language code will be `en`, for British it's `en_GB` etc.. because following command has a placeholder for your language code
+3) Now we will be altering the CPU model string, in this step you'll need to know what language is your macOS in because following command has a placeholder for your language code.
+If it's American english, your language code would be `en`, for British it's `en_GB` etc..
 
 ```
 cp /System/Library/PrivateFrameworks/AppleSystemInfo.framework/Versions/A/Resources/<YOUR LANGUAGE CODE>.lproj/Processors.strings ~/Desktop/
