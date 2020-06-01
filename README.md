@@ -44,6 +44,9 @@ SMBIOS: Spoof as `iMacPro1,1` (Generate with [GenSMBIOS](https://github.com/corp
 * Removed
    - Everything except 'OpenRuntime.efi' - _We don't need the rest at all (legacy or Intel specific drivers that might break the EFI for AMD systems)_
 
+* Added
+   - [HfsPlus.efi](https://github.com/acidanthera/OcBinaryData/blob/master/Drivers/HfsPlus.efi) - Required to be able to see HFS volumes
+
 ### Kexts (Also known as "Kernel Extensions")
 
 **[VirtualSMC](https://github.com/acidanthera/VirtualSMC)** (1.1.4) - Advanced Apple SMC emulator in the kernel, requires Lilu
@@ -67,6 +70,8 @@ After placing the NVMeFix kext in its folder, don't forget to do an 'OC Snapshot
 
 I usually nuke the entire directory content as I won't probably never use those debugging tools.
 Also according to the guide linked below it is better to do so anyways.
+
+For troubleshooting purposes I have kept the 'OpenShell.efi' tool
 
 ## Creating the USB installer
 
