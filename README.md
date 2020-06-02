@@ -42,7 +42,7 @@ SMBIOS: Spoof as `iMacPro1,1` (Generate with [GenSMBIOS](https://github.com/corp
 ### Drivers
 
 * Removed
-   - Everything except 'OpenRuntime.efi' - _We don't need the rest at all (legacy or Intel specific drivers that might break the EFI for AMD systems)_
+   - Everything except 'OpenRuntime.efi' and 'OpenCanopy.efi' - _We don't need the rest at all (legacy or Intel specific drivers that might break the EFI for AMD systems)_
 
 * Added
    - [HfsPlus.efi](https://github.com/acidanthera/OcBinaryData/blob/master/Drivers/HfsPlus.efi) - Required to be able to see HFS volumes
