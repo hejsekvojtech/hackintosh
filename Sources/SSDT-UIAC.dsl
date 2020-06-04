@@ -9,15 +9,9 @@ DefinitionBlock ("", "SSDT", 2, "ACDT", "_UIAC", 0)
             // PTXH (1022_43d5)
             "PTXH", Package()
             {
-                "port-count", Buffer() { 0x0E, 0x00, 0x00, 0x00 },
+                "port-count", Buffer() { 0x0D, 0x00, 0x00, 0x00 },
                 "ports", Package()
                 {
-                      "PO10", Package()
-                      {
-                          "name", Buffer() { "PO10" },
-                          "UsbConnector", 3,
-                          "port", Buffer() { 0x0A, 0x00, 0x00, 0x00 },
-                      },
                       "PO11", Package()
                       {
                           "name", Buffer() { "PO11" },
@@ -35,18 +29,6 @@ DefinitionBlock ("", "SSDT", 2, "ACDT", "_UIAC", 0)
                           "name", Buffer() { "PO13" },
                           "UsbConnector", 0,
                           "port", Buffer() { 0x0D, 0x00, 0x00, 0x00 },
-                      },
-                      "PO14", Package()
-                      {
-                          "name", Buffer() { "PO14" },
-                          "UsbConnector", 3,
-                          "port", Buffer() { 0x0E, 0x00, 0x00, 0x00 },
-                      },
-                      "POT1", Package()
-                      {
-                          "name", Buffer() { "POT1" },
-                          "UsbConnector", 9,
-                          "port", Buffer() { 0x01, 0x00, 0x00, 0x00 },
                       },
                       "POT2", Package()
                       {
@@ -89,12 +71,6 @@ DefinitionBlock ("", "SSDT", 2, "ACDT", "_UIAC", 0)
                           "name", Buffer() { "POT8" },
                           "UsbConnector", 0,
                           "port", Buffer() { 0x08, 0x00, 0x00, 0x00 },
-                      },
-                      "POT9", Package()
-                      {
-                          "name", Buffer() { "POT9" },
-                          "UsbConnector", 3,
-                          "port", Buffer() { 0x09, 0x00, 0x00, 0x00 },
                       },
                 },
             },
