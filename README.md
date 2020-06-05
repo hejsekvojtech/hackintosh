@@ -63,6 +63,8 @@ SMBIOS: Spoof as `iMacPro1,1` (Generate with [GenSMBIOS](https://github.com/corp
 
 **[SMCAMDProcessor](https://github.com/trulyspinach/SMCAMDProcessor)** (0.6.4) - XNU kernel extension for power management and monitoring of AMD processors
 
+**[RadeonBoost](https://www.insanelymac.com/forum/topic/343461-kext-tired-of-low-geekbench-scores-use-radeonboost/)** (1.6) - Makes use of special framebuffer that Apple uses for their GPUs on top of "regular" PC one hence improved workload performance
+
 _Although macOS supports NVMe drives, only those from the IONVMe family work out-of-the-box which are unfortunately limited to Apple. If you are using an NVMe drive, you'll need this: **[NVMeFix](https://github.com/acidanthera/NVMeFix)** (1.0.2).
 After placing the NVMeFix kext in its folder, don't forget to do an 'OC Snapshot' in **[ProperTree](https://github.com/corpnewt/ProperTree)**_
 
