@@ -12,10 +12,16 @@ DefinitionBlock ("", "SSDT", 2, "ACDT", "_UIAC", 0)
                 "port-count", Buffer() { 0x0D, 0x00, 0x00, 0x00 },
                 "ports", Package()
                 {
+                      "PO10", Package()
+                      {
+                          "name", Buffer() { "PO10" },
+                          "UsbConnector", 0,
+                          "port", Buffer() { 0x0A, 0x00, 0x00, 0x00 },
+                      },
                       "PO11", Package()
                       {
                           "name", Buffer() { "PO11" },
-                          "UsbConnector", 255,
+                          "UsbConnector", 0,
                           "port", Buffer() { 0x0B, 0x00, 0x00, 0x00 },
                       },
                       "PO12", Package()

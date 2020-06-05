@@ -52,10 +52,21 @@
 				</data>
 				<key>ports</key>
 				<dict>
+					<key>PO10</key>
+					<dict>
+						<key>UsbConnector</key>
+						<integer>0</integer>
+						<key>name</key>
+						<string>PO10</string>
+						<key>port</key>
+						<data>
+						CgAAAA==
+						</data>
+					</dict>
 					<key>PO11</key>
 					<dict>
 						<key>UsbConnector</key>
-						<integer>255</integer>
+						<integer>0</integer>
 						<key>name</key>
 						<string>PO11</string>
 						<key>port</key>
