@@ -71,8 +71,6 @@ After placing the NVMeFix kext in its folder, don't forget to do an 'OC Snapshot
 I usually nuke the entire directory content as I won't probably never use those debugging tools.
 Also according to the guide linked below it is better to do so anyways.
 
-For troubleshooting purposes I have kept the 'OpenShell.efi' tool
-
 ## Creating the USB installer
 
 Go see this detailed guide: <https://dortania.github.io/OpenCore-Desktop-Guide/installer-guide/>
