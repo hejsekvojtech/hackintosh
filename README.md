@@ -99,12 +99,12 @@ and
 cp Library/Preferences/com.apple.SystemProfiler.plist ~/Desktop/
 ```
 
-4) On your desktop you will see two new files, _com.apple.SystemProfiler.plist_ and _Processors.strings_. Open _com.apple.SystemProfiler.plist_ with BBEdit
-5) Just replace the default product name that is wrapped in the `<string>` tag with your own and save
-6) Now open _Processors.strings_ with BBEdit
-7) Search for the CPU model shown in the 'About This Mac' window, and modify the one that is wrapped in the `<string>` tag to the real one
-8) Save and exit
-9) Open Terminal and copy modified files back to their proper paths
+3) On your desktop you will see two new files, _com.apple.SystemProfiler.plist_ and _Processors.strings_. Open _com.apple.SystemProfiler.plist_ with BBEdit
+4) Just replace the default product name that is wrapped in the `<string>` tag with your own and save
+5) Now open _Processors.strings_ with BBEdit
+6) Search for the CPU model shown in the 'About This Mac' window, and modify the one that is wrapped in the `<string>` tag to the real one
+7) Save and exit
+8) Open Terminal and copy modified files back to their proper paths
 
 ```
 sudo cp -Rf ~/Desktop/com.apple.SystemProfiler.plist Library/Preferences/
