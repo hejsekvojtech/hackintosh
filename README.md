@@ -33,7 +33,7 @@ This setup should work on most B350/B450 boards and Ryzen CPUs paired with any P
 
 ## OpenCore Configuration
 
-**[OpenCorePkg](https://github.com/acidanthera/OpenCorePkg.git)** (0.6.0) - the base EFI structure
+**[OpenCorePkg](https://github.com/acidanthera/OpenCorePkg.git)** (0.6.1) - the base EFI structure
 
 ### config.plist
 
@@ -57,7 +57,7 @@ SMBIOS: Spoof as `iMacPro1,1` (Generate with [GenSMBIOS](https://github.com/corp
 
 **[AppleALC](https://github.com/acidanthera/AppleALC)** (1.5.1) - An open source kernel extension enabling native macOS HD audio
 
-**[RealtekRTL8111](https://github.com/Mieze/RTL8111_driver_for_OS_X)** (2.2.2) - An open source driver for the Realtek RTL8111/8168 family
+**[RealtekRTL8111](https://github.com/Mieze/RTL8111_driver_for_OS_X)** (2.3.0) - An open source driver for the Realtek RTL8111/8168 family
 
 **[AppleMCEReporterDisabler](https://github.com/acidanthera/bugtracker/files/3703498/AppleMCEReporterDisabler.kext.zip)** (unknown) - Disables the AppleMCEReporter kext which causes kernel panics on AMD systems
 
