@@ -79,7 +79,10 @@ Go see this detailed guide: <https://dortania.github.io/OpenCore-Desktop-Guide/i
 
 ### BIOS Settings (DO NOT SKIP!)
 <https://dortania.github.io/OpenCore-Install-Guide/AMD/zen.html#amd-bios-settings>
+
 Note: Parallel Port is not present, skip this
+
+If you are willing to dual-boot, do not enable 'Above 4G decoding' or you won't boot into whatever you are booting. In that case add **npci=0x2000** to boot-args under NVRAM > Add > 7C436110-AB2A-4BBB-A880-FE41995C9F82
 
 ## Modifying machine name in 'About This Mac'
 
