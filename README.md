@@ -1,7 +1,7 @@
-This is my EFI configuration for macOS Catalina on Ryzen.
-OpenCore BL is already packed in, all you need is to generate your unique SMBIOS or features like iMessage won't work.
+This is my EFI configuration for macOS Big Sur on Ryzen.
+OpenCore BL is already packed in, all you need is to generate your unique SMBIOS (SN and UUID) or features like iMessage won't work.
 Clover is not supported as some modules may need conversion and considering that OpenCore has more advantages over Clover I think the choice is obvious.
-This setup should work on most B350/B450 boards and Ryzen CPUs paired with any Polaris GPU
+This setup should work on most B350/B450 boards and Ryzen CPUs paired with any Polaris GPU, Navi GPUs may need additional boot flags
 
 ## Key specifications
 
@@ -22,7 +22,7 @@ This setup should work on most B350/B450 boards and Ryzen CPUs paired with any P
 - [x] iServices (make sure you generate a new SMBIOS before installing)
 - [x] Sleep
 - [x] Proper GPU support
-- [x] Supplementary updates (OpenCore needs to be updated first!)
+- [x] Supplementary updates
 
 ### Not tested
 * FileVault
@@ -49,70 +49,59 @@ SMBIOS: Spoof as `iMacPro1,1` (Generate with [GenSMBIOS](https://github.com/corp
 
 ### Kexts (Also known as "Kernel Extensions")
 
-**[VirtualSMC](https://github.com/acidanthera/VirtualSMC)** (1.1.5) - Advanced Apple SMC emulator in the kernel, requires Lilu
+**[VirtualSMC](https://github.com/acidanthera/VirtualSMC)** (1.1.6) - Advanced Apple SMC emulator in the kernel, requires Lilu
 
-**[Lilu](https://github.com/acidanthera/Lilu)** (1.4.6) - An interface for kext, process, program, library patching
+**[Lilu](https://github.com/acidanthera/Lilu)** (1.4.7) - An interface for kext, process, program, library patching
 
-**[WhateverGreen](https://github.com/acidanthera/WhateverGreen)** (1.4.1) - Adds support for select GPUs (AMD and Nvidia), fixes glitches and makes macOS greatly usable
+**[WhateverGreen](https://github.com/acidanthera/WhateverGreen)** (1.4.2) - Adds support for select GPUs (AMD and Nvidia), fixes glitches and makes macOS greatly usable
 
-**[AppleALC](https://github.com/acidanthera/AppleALC)** (1.5.1) - An open source kernel extension enabling native macOS HD audio
+**[AppleALC](https://github.com/acidanthera/AppleALC)** (1.5.2) - An open source kernel extension enabling native macOS HD audio
 
 **[RealtekRTL8111](https://github.com/Mieze/RTL8111_driver_for_OS_X)** (2.3.0) - An open source driver for the Realtek RTL8111/8168 family
 
-**[AppleMCEReporterDisabler](https://github.com/acidanthera/bugtracker/files/3703498/AppleMCEReporterDisabler.kext.zip)** (unknown) - Disables the AppleMCEReporter kext which causes kernel panics on AMD systems
+**[AppleMCEReporterDisabler](https://github.com/acidanthera/bugtracker/issues/424#issuecomment-535624313)** (1.0.0) - Disables the AppleMCEReporter kext which causes kernel panics on AMD systems
 
-**[SMCAMDProcessor](https://github.com/trulyspinach/SMCAMDProcessor)** (0.6.4) - XNU kernel extension for power management and monitoring of AMD processors
+**[SMCAMDProcessor](https://github.com/trulyspinach/SMCAMDProcessor)** (0.6.5) - XNU kernel extension for power management and monitoring of AMD processors
 
-_Although macOS supports NVMe drives, only those from the IONVMe family work out-of-the-box which are unfortunately limited to Apple. If you are using an NVMe drive, you'll need this: **[NVMeFix](https://github.com/acidanthera/NVMeFix)** (1.0.3).
+_Although macOS supports NVMe drives, only those from the IONVMe family work out-of-the-box which are unfortunately limited to Apple. If you are using an NVMe drive, you'll need this: **[NVMeFix](https://github.com/acidanthera/NVMeFix)**.
 After placing the NVMeFix kext in its folder, don't forget to do an 'OC Snapshot' in **[ProperTree](https://github.com/corpnewt/ProperTree)**_
 
 ### Tools
 
-I usually nuke the entire directory content as I won't probably never use those debugging tools.
+I usually nuke the entire directory content as I won't probably never need those debugging tools.
 Also according to the guide linked below it is better to do so anyways.
 
-## Creating the USB installer
+## Preparations
+
+### Creating the USB installer
 
 Go see this detailed guide: <https://dortania.github.io/OpenCore-Desktop-Guide/installer-guide/>
 
-## Modifying 'About This Mac' (this guide only works up to macOS Catalina)
+### BIOS Settings (DO NOT SKIP!)
+<https://dortania.github.io/OpenCore-Install-Guide/AMD/zen.html#amd-bios-settings>
+Note: Parallel Port is not present, skip this
+
+## Modifying machine name in 'About This Mac'
 
 ![](https://github.com/hejsekvojtech/ryzentosh/blob/master/Res/AboutThisMac.png)
 
 ### You will need
-* **[BBEdit](https://www.barebones.com/products/bbedit/download.html)** - universal text editor
-* Disabled System Integrity Protection
+* .plist editor - **[BBEdit](https://www.barebones.com/products/bbedit/download.html)** or ProperTree
 * Terminal
 
 ### How to
-1) Open Terminal and type `sudo mount -uw /` and your password, this remounts System as read-write
-2) Now we will be altering the CPU model string, in this step you'll need to know what language is your macOS in because following command has a placeholder for your language code.
-If it's American english, your language code would be `en`, for British it's `en_GB` etc..
-
-```
-cp /System/Library/PrivateFrameworks/AppleSystemInfo.framework/Versions/A/Resources/<YOUR LANGUAGE CODE>.lproj/Processors.strings ~/Desktop/
-```
-
-and
+1) Open Terminal and copy & paste following command
 
 ```
 cp Library/Preferences/com.apple.SystemProfiler.plist ~/Desktop/
 ```
 
-3) On your desktop you will see two new files, _com.apple.SystemProfiler.plist_ and _Processors.strings_. Open _com.apple.SystemProfiler.plist_ with BBEdit
-4) Just replace the default product name that is wrapped in the `<string>` tag with your own and save
-5) Now open _Processors.strings_ with BBEdit
-6) Search for the CPU model shown in the 'About This Mac' window, and modify the one that is wrapped in the `<string>` tag to the real one
-7) Save and exit
-8) Open Terminal and copy modified files back to their proper paths
+2) On your desktop you will see a new file called _com.apple.SystemProfiler.plist_. Open _com.apple.SystemProfiler.plist_ with .plist editor of your choice
+3) Just replace the default product name that is wrapped in the `<string>` tag with your own, then save and exit
+4) Open Terminal and copy modified .plist back to its proper location
 
 ```
-sudo cp -Rf ~/Desktop/com.apple.SystemProfiler.plist Library/Preferences/
-sudo cp -Rf ~/Desktop/Processors.strings /System/Library/PrivateFrameworks/AppleSystemInfo.framework/Versions/A/Resources/<YOUR LANGUAGE CODE>.lproj/Processors.strings
+cp -Rf ~/Desktop/com.apple.SystemProfiler.plist Library/Preferences/
 ```
 
-10) Reboot
-
-### Sources
-<https://amd-osx.com/forum/viewtopic.php?f=61&t=9516&sid=f0388ae3b575f0c26959fc3a933dbb54>
-<https://www.idownloadblog.com/2017/01/13/how-to-modify-about-this-mac-hackintosh/>
+5) Reboot
