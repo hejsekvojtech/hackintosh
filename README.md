@@ -26,14 +26,16 @@ This setup should work on most B350/B450 boards and Ryzen CPUs paired with any P
 
 ### Not tested
 * FileVault
-* Docker
 
 ### Not working
 * Microphone out (works with **[VoodooHDA](https://sourceforge.net/projects/voodoohda/)** but audio quality suffers a bit on Zen)
 
+### Notes
+Requires the latest AGESA 1.1.0.0 BIOS update
+
 ## OpenCore Configuration
 
-**[OpenCorePkg](https://github.com/acidanthera/OpenCorePkg.git)** (0.6.2) - the base EFI structure
+**[OpenCorePkg](https://github.com/acidanthera/OpenCorePkg.git)** (0.6.5) - the base EFI structure
 
 ### config.plist
 
@@ -49,27 +51,26 @@ SMBIOS: Spoof as `iMacPro1,1` (Generate with [GenSMBIOS](https://github.com/corp
 
 ### Kexts (Also known as "Kernel Extensions")
 
-**[VirtualSMC](https://github.com/acidanthera/VirtualSMC)** (1.1.7) - Advanced Apple SMC emulator in the kernel, requires Lilu
+**[VirtualSMC](https://github.com/acidanthera/VirtualSMC)** (1.1.9) - Advanced Apple SMC emulator in the kernel, requires Lilu
 
-**[Lilu](https://github.com/acidanthera/Lilu)** (1.4.8) - An interface for kext, process, program, library patching
+**[Lilu](https://github.com/acidanthera/Lilu)** (1.5.0) - An interface for kext, process, program, library patching
 
-**[WhateverGreen](https://github.com/acidanthera/WhateverGreen)** (1.4.3) - Adds support for select GPUs (AMD and Nvidia), fixes glitches and makes macOS greatly usable
+**[WhateverGreen](https://github.com/acidanthera/WhateverGreen)** (1.4.6) - Adds support for select GPUs (AMD and Nvidia), fixes glitches and makes macOS greatly usable
 
-**[AppleALC](https://github.com/acidanthera/AppleALC)** (1.5.3) - An open source kernel extension enabling native macOS HD audio
+**[AppleALC](https://github.com/acidanthera/AppleALC)** (1.5.6) - An open source kernel extension enabling native macOS HD audio
 
 **[RealtekRTL8111](https://github.com/Mieze/RTL8111_driver_for_OS_X)** (2.3.0) - An open source driver for the Realtek RTL8111/8168 family
 
 **[AppleMCEReporterDisabler](https://github.com/acidanthera/bugtracker/issues/424#issuecomment-535624313)** (1.0.0) - Disables the AppleMCEReporter kext which causes kernel panics on AMD systems
 
-**[SMCAMDProcessor](https://github.com/trulyspinach/SMCAMDProcessor)** (0.6.5) - XNU kernel extension for power management and monitoring of AMD processors
+**[SMCAMDProcessor](https://github.com/trulyspinach/SMCAMDProcessor)** (0.6.6) - XNU kernel extension for power management and monitoring of AMD processors
 
 _Although macOS supports NVMe drives, only those from the IONVMe family work out-of-the-box which are unfortunately limited to Apple. If you are using an NVMe drive, you'll need this: **[NVMeFix](https://github.com/acidanthera/NVMeFix)**.
 After placing the NVMeFix kext in its folder, don't forget to do an 'OC Snapshot' in **[ProperTree](https://github.com/corpnewt/ProperTree)**_
 
 ### Tools
 
-I usually nuke the entire directory content as I won't probably never need those debugging tools.
-Also according to the guide linked below it is better to do so anyways.
+Nuke it
 
 ## Preparations
 
@@ -82,7 +83,7 @@ Go see this detailed guide: <https://dortania.github.io/OpenCore-Desktop-Guide/i
 
 Note: Parallel Port and Fast Boot are not present, skip these
 
-If you are willing to dual-boot, do not enable 'Above 4G decoding' or you won't boot into whatever you are booting to, well Linux actualy boots with this enabled but Windows is just way too retarded.
+If you are willing to dual-boot with Windows, do not enable 'Above 4G decoding' or you won't boot because Windows is just retarded.
 
 In that case add **npci=0x2000** to boot-args under NVRAM > Add > 7C436110-AB2A-4BBB-A880-FE41995C9F82
 
