@@ -19,7 +19,7 @@ This setup should work on most B350/B450 boards and Ryzen CPUs paired with any P
 - [x] Audio (Front panel and back)
 - [x] USB (Front panel and back)
 - [x] Ethernet
-- [x] iServices (make sure you generate a new SMBIOS before installing)
+- [x] iServices (make sure you have unique SMBIOS generated)
 - [x] Sleep
 - [x] Proper GPU support
 - [x] Supplementary updates
@@ -35,31 +35,31 @@ Requires the latest AGESA 1.1.0.0 BIOS update
 
 ## OpenCore Configuration
 
-**[OpenCorePkg](https://github.com/acidanthera/OpenCorePkg.git)** (0.6.5) - the base EFI structure
+**[OpenCorePkg](https://github.com/acidanthera/OpenCorePkg.git)** (0.6.8) - the base EFI structure
 
 ### config.plist
 
-SMBIOS: Spoof as `iMacPro1,1` (Generate with [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS)) - we spoof our machine as an iMac Pro 2017 because it is the closest one to our setup spec wise
+SMBIOS: Spoof as `iMacPro1,1` (Generate with [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS)) - works best with this configuration
 
 ### Drivers
 
 * Removed
-   - Everything except 'OpenRuntime.efi' and 'OpenCanopy.efi' - _We don't need the rest at all (legacy or Intel specific drivers that might break the EFI for AMD systems)_
-
+   - Everything except `OpenRuntime.efi` and `OpenCanopy.efi` - _We don't need the rest at all (legacy or Intel specific drivers that might break the EFI for AMD systems)_
+   
 * Added
    - [HfsPlus.efi](https://github.com/acidanthera/OcBinaryData/blob/master/Drivers/HfsPlus.efi) - Required to be able to see HFS volumes
 
 ### Kexts (Also known as "Kernel Extensions")
 
-**[VirtualSMC](https://github.com/acidanthera/VirtualSMC)** (1.1.9) - Advanced Apple SMC emulator in the kernel, requires Lilu
+**[VirtualSMC](https://github.com/acidanthera/VirtualSMC)** (1.2.2) - Advanced Apple SMC emulator in the kernel, requires Lilu
 
-**[Lilu](https://github.com/acidanthera/Lilu)** (1.5.0) - An interface for kext, process, program, library patching
+**[Lilu](https://github.com/acidanthera/Lilu)** (1.5.2) - An interface for kext, process, program, library patching
 
-**[WhateverGreen](https://github.com/acidanthera/WhateverGreen)** (1.4.6) - Adds support for select GPUs (AMD and Nvidia), fixes glitches and makes macOS greatly usable
+**[WhateverGreen](https://github.com/acidanthera/WhateverGreen)** (1.4.9) - Adds support for select GPUs (AMD and Nvidia), fixes glitches and makes macOS greatly usable
 
-**[AppleALC](https://github.com/acidanthera/AppleALC)** (1.5.6) - An open source kernel extension enabling native macOS HD audio
+**[AppleALC](https://github.com/acidanthera/AppleALC)** (1.5.9) - An open source kernel extension enabling native macOS HD audio
 
-**[RealtekRTL8111](https://github.com/Mieze/RTL8111_driver_for_OS_X)** (2.3.0) - An open source driver for the Realtek RTL8111/8168 family
+**[RealtekRTL8111](https://github.com/Mieze/RTL8111_driver_for_OS_X)** (2.4.0) - An open source driver for the Realtek RTL8111/8168 family
 
 **[AppleMCEReporterDisabler](https://github.com/acidanthera/bugtracker/issues/424#issuecomment-535624313)** (1.0.0) - Disables the AppleMCEReporter kext which causes kernel panics on AMD systems
 
