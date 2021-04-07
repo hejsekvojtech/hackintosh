@@ -39,15 +39,16 @@ Requires the latest AGESA 1.1.0.0 BIOS update
 
 ### config.plist
 
-SMBIOS: Spoof as `iMacPro1,1` (Generate with [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS)) - works best with this configuration
+Generate SMBIOS for `iMacPro1,1` (Generate with [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS)) - works best with this configuration
+`MacPro7,1` is also an option but it complains about RAM configuration on systems with less than 32 GB of RAM
 
-### Drivers
+ ### Drivers
 
 * Removed
    - Everything except `OpenRuntime.efi` and `OpenCanopy.efi` - _We don't need the rest at all (legacy or Intel specific drivers that might break the EFI for AMD systems)_
    
 * Added
-   - [HfsPlus.efi](https://github.com/acidanthera/OcBinaryData/blob/master/Drivers/HfsPlus.efi) - Required to be able to see HFS volumes
+   - [HfsPlus.efi](https://github.com/acidanthera/OcBinaryData/blob/master/Drivers/HfsPlus.efi) - Required to be able to see HFS volumes, OC already ships with its opensource variant `OpenHfsPlus.efi` which is quite experimental and approximately 3 times slower than its proprietary counterpart and is yet to undergo security audit
 
 ### Kexts (Also known as "Kernel Extensions")
 
@@ -92,7 +93,7 @@ In that case add **npci=0x2000** to boot-args under NVRAM > Add > 7C436110-AB2A-
 ![](https://github.com/hejsekvojtech/ryzentosh/blob/master/Res/AboutThisMac.png)
 
 ### You will need
-* .plist editor - **[BBEdit](https://www.barebones.com/products/bbedit/download.html)** or ProperTree
+* .plist editor - **[ProperTree](https://github.com/corpnewt/ProperTree)**
 * Terminal
 
 ### How to
