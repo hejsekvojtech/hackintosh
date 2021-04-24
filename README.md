@@ -8,7 +8,6 @@ This setup should work on most B350/B450 boards and Ryzen CPUs paired with any P
 | **MOTHERBOARD** | MSI Tomahawk B450 |
 | **GPU** | Sapphire RX 590 Pulse |
 | **SSD (System)** | WD Blue 500 GB |
-| **HDD (Data)** | Seagate Barracuda 2 TB |
 | **ETHERNET** | Realtek 8111H |
 | **AUDIO** | Realtek ALC892 |
 
@@ -61,6 +60,8 @@ Generate SMBIOS for `MacPro7,1` (Generate with [GenSMBIOS](https://github.com/co
 
 **[NVMeFix](https://github.com/acidanthera/NVMeFix)** - set of patches to improve compatibility with non-Apple NVMe SSDs
 
+**[RestrictEvents](https://github.com/acidanthera/RestrictEvents)** - suppresses memory configuration warnings on boot for `MacPro7,1` SMBIOS
+
 ### Tools
 
 Nuke it
@@ -72,10 +73,13 @@ Nuke it
 Go see this detailed guide: <https://dortania.github.io/OpenCore-Desktop-Guide/installer-guide/>
 
 ### BIOS Settings (DO NOT SKIP!)
-<https://dortania.github.io/OpenCore-Install-Guide/AMD/zen.html#amd-bios-settings>
 
-Note: Parallel Port and Fast Boot are not present, skip these
-
-If you are willing to dual-boot with Windows, do not enable 'Above 4G decoding' or you won't boot because Windows is just retarded.
-
-In that case add **npci=0x2000** to boot-args under NVRAM > Add > 7C436110-AB2A-4BBB-A880-FE41995C9F82
+| Setting | Status |
+|---------|--------|
+| **Re-Size BAR Support** | Disabled |
+| **Above 4G Memory/Crypto Currency Mining** | Disabled |
+| **SATA Mode** | AHCI Mode |
+| **XHCI Hand-off** | Enabled |
+| **Serial(COM) Port** | Disabled |
+| **BIOS UEFI/CSM Mode** | UEFI |
+| **Secure Boot** | Disabled |
