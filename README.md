@@ -15,7 +15,7 @@ This setup should work on most B350/B450 boards and Ryzen CPUs paired with any P
 - [x] Audio (Front panel and back)
 - [x] USB (Front panel and back)
 - [x] Ethernet
-- [x] iServices (make sure you have unique SMBIOS generated)
+- [x] iServices (make sure you have unique SN)
 - [x] Sleep
 - [x] Proper GPU support
 - [x] Supplementary updates
@@ -28,7 +28,7 @@ Requires the latest AGESA 1.2.0.0 BIOS update
 
 ## OpenCore Configuration
 
-**[OpenCorePkg](https://github.com/acidanthera/OpenCorePkg.git)** (0.6.8) - the base EFI structure
+**[OpenCorePkg](https://github.com/acidanthera/OpenCorePkg.git)** (0.6.9) - the base EFI structure
 
 ### config.plist
 
@@ -44,7 +44,7 @@ Generate SMBIOS for `MacPro7,1` (Generate with [GenSMBIOS](https://github.com/co
 
 ### Kexts (Also known as "Kernel Extensions")
 
-**[VirtualSMC](https://github.com/acidanthera/VirtualSMC)** - Advanced Apple SMC emulator in the kernel, requires Lilu
+**[VirtualSMC](https://github.com/acidanthera/VirtualSMC)** - Advanced Apple SMC emulator in the kernel
 
 **[Lilu](https://github.com/acidanthera/Lilu)** - An interface for kext, process, program, library patching
 
