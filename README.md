@@ -1,5 +1,7 @@
 This setup should work on most B350/B450 boards and Ryzen CPUs paired with any Polaris GPU, Navi GPUs may need additional boot flags
 
+![System Info](Img/System.png)
+
 ## Key specifications
 
 | Component | Model |

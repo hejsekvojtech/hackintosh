@@ -6,20 +6,18 @@ DefinitionBlock ("", "SSDT", 2, "DRTNIA", "RhubOff", 0x00001000)
 {
     External (_SB.PCI0.GP13.XHC0.RHUB, DeviceObj) // Full pathing to RHUB, change to yours
 
-
     Scope (_SB.PCI0.GP13.XHC0.RHUB) // Full pathing to RHUB, change to yours
+    {
+        Method (_STA, 0, NotSerialized)
         {
-            Method (_STA, 0, NotSerialized)
+            If (_OSI ("Darwin"))
             {
-               If (_OSI ("Darwin"))
-                     {
-                        Return (Zero) // This disables the device only in macOS
-                     }
-                     Else
-                     {
-                        Return (0x0F) // Re-enables it for Windows
-                     }
-           }                    
-        }  
+                Return (Zero) // This disables the device only in macOS
+            }
+            Else
+            {
+                Return (0x0F) // Re-enables it for Windows
+            }
+        }                    
+    }  
 }
-
