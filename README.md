@@ -1,4 +1,5 @@
-This setup should work on most B350/B450 boards and Ryzen CPUs paired with any Polaris GPU, Navi GPUs may need additional boot flags
+This setup should work on most B350/B450 boards and Ryzen CPUs paired with any Polaris GPU, Navi GPUs may need additional boot flags.
+Tested on macOS Monterey and Big Sur
 
 ![System Info](Img/System.png)
 
@@ -23,14 +24,15 @@ This setup should work on most B350/B450 boards and Ryzen CPUs paired with any P
 - [x] Supplementary updates
 
 ### Not working
-* Microphone out (works with **[VoodooHDA](https://sourceforge.net/projects/voodoohda/)** but audio quality suffers a bit on Zen)
+* Microphone in (works with **[VoodooHDA](https://sourceforge.net/projects/voodoohda/)** but audio quality suffers a bit on Zen)
 
 ### Notes
-Requires the latest AGESA 1.2.0.0 BIOS update
+Requires the latest AGESA 1.2.0.0 (or newer) BIOS update
+In case you are wondering why sound isn't working for you, set audio output to "Internal Speakers"
 
 ## OpenCore Configuration
 
-**[OpenCorePkg](https://github.com/acidanthera/OpenCorePkg.git)** (0.6.9) - the base EFI structure
+**[OpenCorePkg](https://github.com/acidanthera/OpenCorePkg.git)** (0.7.3) - the base EFI structure
 
 ### config.plist
 
@@ -42,7 +44,7 @@ Generate SMBIOS for `MacPro7,1` (Generate with [GenSMBIOS](https://github.com/co
    - Everything except `OpenRuntime.efi` and `OpenCanopy.efi` - _We don't need the rest at all (legacy or Intel specific drivers that might break the EFI for AMD systems)_
    
 * Added
-   - [HfsPlus.efi](https://github.com/acidanthera/OcBinaryData/blob/master/Drivers/HfsPlus.efi) - Required to be able to see HFS volumes, OC already ships with its opensource variant `OpenHfsPlus.efi` which is quite experimental and approximately 3 times slower than its proprietary counterpart and is yet to undergo security audit
+   - [HfsPlus.efi](https://github.com/acidanthera/OcBinaryData/blob/master/Drivers/HfsPlus.efi) - Required to be able to see HFS volumes. OC already ships with its opensource variant `OpenHfsPlus.efi` which is quite experimental and approximately 3 times slower than its proprietary counterpart and is yet to undergo security audit
 
 ### Kexts (Also known as "Kernel Extensions")
 
