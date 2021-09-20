@@ -1,4 +1,5 @@
 This setup should work on most B350/B450 boards and Ryzen CPUs paired with any Polaris GPU, Navi GPUs may need additional boot flags.
+
 Tested on macOS Monterey and Big Sur
 
 ![System Info](Img/System.png)
@@ -28,6 +29,7 @@ Tested on macOS Monterey and Big Sur
 
 ### Notes
 Requires the latest AGESA 1.2.0.0 (or newer) BIOS update
+
 In case you are wondering why sound isn't working for you, set audio output to "Internal Speakers"
 
 ## OpenCore Configuration
