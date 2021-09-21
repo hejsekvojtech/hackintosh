@@ -32,6 +32,8 @@ Requires the latest AGESA 1.2.0.0 (or newer) BIOS update
 
 In case you are wondering why sound isn't working for you, set audio output to "Internal Speakers"
 
+This OC config is preconfigured for 8-core CPUs, for others (Ryzen 3,5,9) you must configure kernel patch for Ryzen accordingly as specified by this [guide](https://github.com/AMD-OSX/AMD_Vanilla/tree/master#read-me-first)
+
 ## OpenCore Configuration
 
 **[OpenCorePkg](https://github.com/acidanthera/OpenCorePkg.git)** (0.7.3) - the base EFI structure
