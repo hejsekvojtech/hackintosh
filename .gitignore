@@ -1,1 +1,3 @@
 *.DS_Store
+*.contentFlavour
+*._config.plist
